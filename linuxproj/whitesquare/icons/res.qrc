@@ -1,0 +1,15 @@
+<RCC>
+  <qresource prefix="Icons">
+    <file>fujiwara.jpeg</file>
+    <file>anime.jpg</file>
+    <file>zayka.png</file>
+    <file>TNYA.jpg</file>
+    <file>girl.png</file>
+    <file>HHLogo.png</file>
+    <file>baseline_not_interested_white_48dp.png</file>
+    <file>baseline_reply_all_white_48dp.png</file>
+    <file>baseline_chevron_left_white_48dp.png</file>
+    <file>baseline_navigate_next_white_48dp.png</file>
+    <file>baseline_send_white_48dp.png</file>
+  </qresource>
+</RCC>

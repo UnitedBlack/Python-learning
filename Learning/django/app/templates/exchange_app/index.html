@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="text" name="amount">
+    <select name="from_curr" id="">
+
+    </select>
+    <select name="to_curr" id="">
+
+    </select>
+    <button type="submit">Рассчитать</button>
+</form>
+{% endblock %}

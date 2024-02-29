@@ -1,0 +1,6 @@
+venv/
+trash/
+Sources/shorts/
+output_files/
+config
+Tiktok\video_jsons\already_uploaded.json

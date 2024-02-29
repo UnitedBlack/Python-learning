@@ -1,0 +1,59 @@
+import lxml
+import requests
+from forhttp import cookies
+from forhttp import headers
+from forhttp import params
+from lxml import etree
+from lxml import html
+
+
+CYCLE_INDEX = 0
+# for_searching = ""
+# text_string = params['text'] = for_searching
+
+
+def get_html(link='https://hh.ru/search/vacancy?text=Python&salary=&ored_clusters=true&enable_snippets=true&area=1'):
+    response = requests.get(link, params=params,
+                            cookies=cookies, headers=headers)
+    with open("index.html", "w", encoding="utf-8") as file:
+        file.write(response.text)
+    return response
+
+
+html_string = get_html().text
+root = html.fromstring(html_string)
+
+xpath_page_number = root.xpath(
+    "//span[@class='pager-item-not-in-short-range']/span[@class='pager-item-not-in-short-range']/a[@class='bloko-button']/span/text()")
+# [] = 1 страница
+# print(xpath_page_number)
+
+xpath_company_name = root.xpath(
+    "//a[@class='bloko-link bloko-link_kind-tertiary']")
+# print(xpath_company_name)
+
+# for i in xpath_company_name:
+#     CYCLE_INDEX += 1
+#     print(CYCLE_INDEX, i)
+
+xpath_vacancies_link = root.xpath(
+    '//span[@data-page-analytics-event="vacancy_search_suitable_item"]//@href')
+for i in xpath_vacancies_link:
+    CYCLE_INDEX += 1
+    print(CYCLE_INDEX, i)
+
+# опять находит только 20 сука
+
+# def parse_current_page():
+#     xpath_vacancy_title = root.xpath("//a[@class='serp-item__title']/text()")
+
+#     xpath_vacancy_salary = root.xpath('')
+#     xpath_vacancies_link = root.xpath(
+#         '//span[@data-page-analytics-event="vacancy_search_suitable_item"]//@href')
+
+#     xpath_vacancies_response_button = root.xpath(
+#     '//div[@class="serp-item-controls"]/a[@data-qa="vacancy-serp__vacancy_response"]/@href')
+
+#     xpath_next_button = root.xpath(
+#     '//div[@class="pager"]/a[@data-qa="pager-next"]/@href')
+#     return xpath_vacancies_link
